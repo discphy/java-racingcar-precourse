@@ -1,21 +1,23 @@
 package racingcar.service;
 
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
-
-import java.util.ArrayList;
-import java.util.List;
+import racingcar.domain.Track;
+import racingcar.dto.CarsDto;
+import racingcar.dto.TrackDto;
 
 public class RacingService {
 
-    public Cars toCars(String input) {
-        String[] inputArray = input.split(",");
-        List<Car> cars = new ArrayList<>();
+    private final InputService inputService;
 
-        for (String name : inputArray) {
-            cars.add(Car.of(name));
-        }
+    public RacingService(InputService inputService) {
+        this.inputService = inputService;
+    }
 
-        return Cars.of(cars);
+    public Cars initCars() {
+        return new CarsDto(inputService.getCars()).toDomain();
+    }
+
+    public Track initTrack() {
+        return new TrackDto(inputService.getTrack()).toDomain();
     }
 }

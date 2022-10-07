@@ -1,43 +1,37 @@
 package racingcar.service;
 
 import org.junit.jupiter.api.Test;
+import racingcar.TestCase;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Track;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingServiceTest {
+
     @Test
-    void 카_리스트_변환() {
+    void InputTestCaseService_Cars_객체_받아오기() {
         //given
-        String carsString = "k3, k5, k7, k9";
-        String[] carsArray = carsString.split(",");
-        List<Car> list = new ArrayList<>();
+        RacingService racingService = new RacingService(new InputTestCaseService(TestCase.CASE2));
 
         //when
-        for (String car : carsArray) {
-            list.add(Car.of(car));
-        }
+        Cars cars = racingService.initCars();
+        Car car = cars.getList().get(1);
 
-        Cars cars = new Cars(list);
-        Car car = cars.getList().get(2);
-
-        assertThat(car.getName()).isEqualTo("k7");
+        //then
+        assertThat(car.getName()).isEqualTo("bmw");
     }
 
     @Test
-    void 카_리스트_변환_서비스_구현() {
+    void InputTestCaseService_Track_객체_받아오기() {
         //given
-        String carsString = "k3, k5, k7, k9";
+        RacingService racingService = new RacingService(new InputTestCaseService(TestCase.CASE2));
 
         //when
-        Cars cars = new RacingService().toCars(carsString);
-        Car car = cars.getList().get(2);
+        Track track = racingService.initTrack();
 
-        assertThat(car.getName()).isEqualTo("k7");
+        //then
+        assertThat(track.getCount()).isEqualTo(5);
     }
 }
