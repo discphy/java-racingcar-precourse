@@ -3,6 +3,7 @@ package racingcar.dto;
 import racingcar.domain.Track;
 
 public class TrackDto {
+
     private final String input;
 
     public TrackDto(String input) {
