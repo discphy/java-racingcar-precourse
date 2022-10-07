@@ -1,7 +1,7 @@
 package racingcar.service;
 
 import org.junit.jupiter.api.Test;
-import racingcar.TestCase;
+import racingcar.value.TestCase;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

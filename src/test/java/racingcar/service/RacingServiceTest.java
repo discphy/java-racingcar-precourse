@@ -1,7 +1,7 @@
 package racingcar.service;
 
 import org.junit.jupiter.api.Test;
-import racingcar.TestCase;
+import racingcar.value.TestCase;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Track;

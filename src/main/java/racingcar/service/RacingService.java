@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import racingcar.value.OutputMessage;
 import racingcar.domain.Cars;
 import racingcar.domain.Track;
 import racingcar.dto.CarsDto;
@@ -14,10 +15,22 @@ public class RacingService {
     }
 
     public Cars initCars() {
-        return new CarsDto(inputService.getCars()).toDomain();
+        try {
+            OutputService.printMessage(OutputMessage.INPUT_CAR);
+            return new CarsDto(inputService.getCars()).toDomain();
+        } catch (IllegalArgumentException e) {
+            OutputService.inputArgumentError(e);
+            return initCars();
+        }
     }
 
     public Track initTrack() {
-        return new TrackDto(inputService.getTrack()).toDomain();
+        try {
+            OutputService.printMessage(OutputMessage.INPUT_TRACK);
+            return new TrackDto(inputService.getTrack()).toDomain();
+        } catch (IllegalArgumentException e) {
+            OutputService.inputArgumentError(e);
+            return initTrack();
+        }
     }
 }

@@ -1,6 +1,6 @@
 package racingcar.service;
 
-import racingcar.TestCase;
+import racingcar.value.TestCase;
 
 public class InputTestCaseService implements InputService {
 
