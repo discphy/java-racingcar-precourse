@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.value;
 
 public enum TestCase {
 
