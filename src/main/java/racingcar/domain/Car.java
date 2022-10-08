@@ -1,15 +1,26 @@
 package racingcar.domain;
 
 public class Car {
-    private String name;
+
+    private final String name;
+    private int move;
 
     public Car(String name) {
         validationName(name);
         this.name = name;
+        this.move = 0;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getMove() {
+        return move;
+    }
+
+    public void goMove() {
+        move++;
     }
 
     private void validationName(String name) {
