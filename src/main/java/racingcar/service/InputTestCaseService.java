@@ -4,7 +4,6 @@ import racingcar.value.TestCase;
 
 public class InputTestCaseService implements InputService {
 
-
     private final TestCase testCase;
 
     public InputTestCaseService(TestCase testCase) {
