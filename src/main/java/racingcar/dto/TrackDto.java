@@ -10,15 +10,15 @@ public class TrackDto {
         this.input = input;
     }
 
-    public Track toDomain() {
-        return Track.of(parseInt(input));
-    }
-
     private int parseInt(String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("레이싱 트랙 값은 숫자만 가능합니다.");
         }
+    }
+
+    public Track toDomain() {
+        return Track.of(parseInt(input));
     }
 }

@@ -14,6 +14,10 @@ public class CarsDto {
         this.input = input;
     }
 
+    private String[] getArray() {
+        return input.split(",");
+    }
+
     public Cars toDomain() {
         List<Car> cars = new ArrayList<>();
 
@@ -22,9 +26,5 @@ public class CarsDto {
         }
 
         return Cars.of(cars);
-    }
-
-    private String[] getArray() {
-        return input.split(",");
     }
 }
