@@ -2,34 +2,23 @@ package racingcar.domain;
 
 public class Car {
 
-    private final String name;
-    private int move;
+    private final Name name;
+    private final Move move;
 
     public Car(String name) {
-        validationName(name);
-        this.name = name;
-        this.move = 0;
+        this.name = new Name(name);
+        this.move = new Move();
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public int getMove() {
+    public Move getMove() {
         return move;
     }
 
-    public void goMove() {
-        move++;
-    }
-
-    private void validationName(String name) {
-        if (name.length() < 1 || name.length() > 5) {
-            throw new IllegalArgumentException("자동차 입력 값이 유효하지 않습니다.");
-        }
-    }
-
     public static Car of(String name) {
-        return new Car(name.trim());
+        return new Car(name);
     }
 }

@@ -62,10 +62,8 @@ public class RacingService {
         }
     }
 
-    private void winnerCar(Car car) {
-        if (car.getMove() == racing.getTrack().getCount()) {
-            racing.getWinners().add(car);
-        }
+    private boolean winnerCar(Car car) {
+        return car.getMove().getDistance() == racing.getTrack().getCount();
     }
 
     private void moveCar(Car car) {

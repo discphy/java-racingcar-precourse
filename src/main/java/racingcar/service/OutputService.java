@@ -14,18 +14,13 @@ public class OutputService {
         System.out.println(outputMessage.getContent());
     }
 
-    public static void printMove(Car car) {
-        System.out.println(car.getName() + " : " + printMoveMark(car.getMove()));
+    public static void printExecute() {
+        printLine();
+        System.out.println(OutputMessage.EXECUTE.getContent());
     }
 
-    private static String printMoveMark(int move) {
-        StringBuilder mark = new StringBuilder();
-
-        for (int count = 0; count < move; count++) {
-            mark.append("-");
-        }
-
-        return mark.toString();
+    public static void printMove(Car car) {
+        System.out.println(car.getName().getName() + " : " + printMoveMark(car.getMove().getDistance()));
     }
 
     public static void printWinner(Winners winners) {
@@ -37,8 +32,13 @@ public class OutputService {
         System.out.println(OutputMessage.ERROR.getContent() + e.getMessage());
     }
 
-    public static void printExecute() {
-        printLine();
-        System.out.println(OutputMessage.EXECUTE.getContent());
+    private static String printMoveMark(int move) {
+        StringBuilder mark = new StringBuilder();
+
+        for (int count = 0; count < move; count++) {
+            mark.append("-");
+        }
+
+        return mark.toString();
     }
 }
