@@ -4,12 +4,11 @@ public class Racing {
 
     private final Cars cars;
     private final Track track;
-    private final Winners winners;
+    private Winners winners;
 
     public Racing(Cars cars, Track track) {
         this.cars = cars;
         this.track = track;
-        this.winners = new Winners();
     }
 
     public static Racing of(Cars cars, Track track) {
@@ -28,7 +27,11 @@ public class Racing {
         return winners;
     }
 
+    public void setWinners(Winners winners) {
+        this.winners = winners;
+    }
+
     public boolean isEnd() {
-        return !winners.isEmpty();
+        return !getWinners().isEmpty();
     }
 }

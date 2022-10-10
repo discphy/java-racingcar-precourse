@@ -1,21 +1,21 @@
 package racingcar.service;
 
-import racingcar.domain.Car;
-import racingcar.domain.Racing;
+import racingcar.domain.*;
 import racingcar.value.OutputMessage;
-import racingcar.domain.Cars;
-import racingcar.domain.Track;
 import racingcar.dto.CarsDto;
 import racingcar.dto.TrackDto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingService {
 
-    private final Carservice carservice;
+    private final CarService carservice;
     private final InputService inputService;
     private final Racing racing;
 
     public RacingService(InputService inputService) {
-        this.carservice = new Carservice();
+        this.carservice = new CarService();
         this.inputService = inputService;
         this.racing = ready();
     }
@@ -56,10 +56,14 @@ public class RacingService {
     }
 
     public void carRacing() {
-        for (Car car : racing.getCars().getList()) {
+        List<Car> cars = new ArrayList<>();
+
+        for (Car car : racing.getCars().getCars()) {
             moveCar(car);
-            winnerCar(car);
+            if (winnerCar(car)) cars.add(car);
         }
+
+        racing.setWinners(Winners.of(cars));
     }
 
     private boolean winnerCar(Car car) {

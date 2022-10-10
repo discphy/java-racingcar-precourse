@@ -1,32 +1,35 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Winners {
 
-    private final List<Car> list;
+    private final List<Car> cars;
 
-    public Winners() {
-        list = new ArrayList<>();
+    public Winners(List<Car> cars) {
+        this.cars = cars;
     }
 
     public void add(Car car) {
-        list.add(car);
+        cars.add(car);
     }
 
     public boolean isEmpty() {
-        return list.isEmpty();
+        return cars.isEmpty();
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
 
-        for (Car car : list) {
-            builder.append(builder.length() != 0 ? ", " : "").append(car.getName());
+        for (Car car : cars) {
+            builder.append(builder.length() != 0 ? ", " : "").append(car.getName().getName());
         }
 
         return builder.toString();
+    }
+
+    public static Winners of(List<Car> cars) {
+        return new Winners(cars);
     }
 }
