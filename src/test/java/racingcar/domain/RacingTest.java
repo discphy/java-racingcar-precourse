@@ -17,11 +17,11 @@ public class RacingTest {
 
         //when
         Racing racing = new Racing(cars, track);
-        List<Car> list = racing.getCars().getList();
+        List<Car> list = racing.getCars().getCars();
         Car benz = list.get(0);
 
         //then
-        assertThat(benz.getName()).isEqualTo("benz");
+        assertThat(benz.getName().getName()).isEqualTo("benz");
         assertThat(racing.getTrack().getCount()).isEqualTo(3);
     }
 }

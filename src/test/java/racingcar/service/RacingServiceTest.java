@@ -1,10 +1,10 @@
 package racingcar.service;
 
 import org.junit.jupiter.api.Test;
-import racingcar.value.TestCase;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Track;
+import racingcar.value.TestCase;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,10 +17,10 @@ public class RacingServiceTest {
 
         //when
         Cars cars = racingService.initCars();
-        Car car = cars.getList().get(1);
+        Car car = cars.getCars().get(1);
 
         //then
-        assertThat(car.getName()).isEqualTo("bmw");
+        assertThat(car.getName().getName()).isEqualTo("bmw");
     }
 
     @Test

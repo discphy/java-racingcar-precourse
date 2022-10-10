@@ -13,10 +13,10 @@ public class CarServiceTest {
         Car car = Car.of("bmw");
 
         //when
-        new Carservice().move(car, 5);
+        new CarService().move(car, 5);
 
         //then
-        assertThat(car.getMove()).isEqualTo(1);
+        assertThat(car.getMove().getDistance()).isEqualTo(1);
     }
 
     @Test
@@ -25,9 +25,9 @@ public class CarServiceTest {
         Car car = Car.of("bmw");
 
         //when
-        new Carservice().move(car, 3);
+        new CarService().move(car, 3);
 
         //then
-        assertThat(car.getMove()).isEqualTo(0);
+        assertThat(car.getMove().getDistance()).isEqualTo(0);
     }
 }

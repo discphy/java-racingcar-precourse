@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -8,13 +7,6 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
-
-    private String cars;
-
-    @BeforeEach
-    void beforeEach() {
-
-    }
 
     @Test
     void 공백포함_문자열은_불일치() {
@@ -49,9 +41,9 @@ public class CarsTest {
 
         //when
         Cars cars = new Cars(Arrays.asList(Car.of("audi"), Car.of("bmw"), Car.of("benz")));
-        Car car = cars.getList().get(1);
+        Car car = cars.getCars().get(1);
 
         //then
-        assertThat(car.getName()).isEqualTo(bmw);
+        assertThat(car.getName().getName()).isEqualTo(bmw);
     }
 }

@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarsDtoTest {
 
     @Test
-    void 카_리스트_변환() {
+    void 자동차_리스트_변환() {
         //given
         String carsString = "k3, k5, k7, k9";
         String[] carsArray = carsString.split(",");
@@ -25,22 +25,21 @@ public class CarsDtoTest {
         }
 
         Cars cars = new Cars(list);
-        Car car = cars.getList().get(2);
+        Car car = cars.getCars().get(2);
 
-        assertThat(car.getName()).isEqualTo("k7");
+        //then
+        assertThat(car.getName().getName()).isEqualTo("k7");
     }
 
     @Test
     void DTO_Cars_변환_예외_최소_자동차수() {
-        assertThatThrownBy(() -> {
-            Cars cars = new CarsDto("k3").toDomain();
-        }).hasMessage("자동차 경주를 위한 최소 2대의 자동차가 필요합니다.");
+        assertThatThrownBy(() -> new CarsDto("k3").toDomain())
+                .hasMessage("자동차 경주를 위한 최소 2대의 자동차가 필요합니다.");
     }
 
     @Test
     void DTO_Cars_변환_예외_자동차_이름_길이() {
-        assertThatThrownBy(() -> {
-            Cars cars = new CarsDto("k3, hyundai").toDomain();
-        }).hasMessage("자동차 입력 값이 유효하지 않습니다.");
+        assertThatThrownBy(() -> new CarsDto("k3, hyundai").toDomain())
+                .hasMessage("자동차 입력 값이 유효하지 않습니다.");
     }
 }
